@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false"
+    >
+
+    <!-- 第一帧动画 -->
+    <item
+        android:duration="1000"
+        >
+
+        <layer-list>
+
+            <item
+                android:right="26.67dp"
+                android:end="26.67dp"
+                >
+
+                <!-- 100% 不透明灰色圆 -->
+                <shape
+                    android:shape="oval"
+                    android:useLevel="false"
+                    >
+
+                    <solid
+                        android:color="#ffb3b3b3"
+                        />
+
+                    <size
+                        android:width="6.67dp"
+                        android:height="6.67dp"
+                        />
+
+                </shape>
+
+            </item>
+
+            <item
+                android:left="13.33dp"
+                android:start="13.33dp"
+                android:right="13.33dp"
+                android:end="13.33dp"
+                >
+
+                <!-- 40% 不透明灰色圆 -->
+                <shape
+                    android:shape="oval"
+                    android:useLevel="false"
+                    >
+
+                    <solid
+                        android:color="#66b3b3b3"
+                        />
+
+                    <size
+                        android:width="6.67dp"
+                        android:height="6.67dp"
+                        />
+
+                </shape>
+
+            </item>
+
+            <item
+                android:left="26.67dp"
+                android:start="26.67dp"
+                >
+
+                <!-- 40% 不透明灰色圆 -->
+                <shape
+                    android:shape="oval"
+                    android:useLevel="false"
+                    >
+
+                    <solid
+                        android:color="#66b3b3b3"
+                        />
+
+                    <size
+                        android:width="6.67dp"
+                        android:height="6.67dp"
+                        />
+
+                </shape>
+
+            </item>
+
+        </layer-list>
+
+    </item>
+
+    <!-- 第二帧动画 -->
+    <item
+        android:duration="1000"
+        >
+
+        <layer-list>
+
+            <item
+                android:right="26.67dp"
+                android:end="26.67dp"
+                >
+
+                <!-- 100% 不透明灰色圆 -->
+                <shape
+                    android:shape="oval"
+                    android:useLevel="false"
+                    >
+
+                    <solid
+                        android:color="#66b3b3b3"
+                        />
+
+                    <size
+                        android:width="6.67dp"
+                        android:height="6.67dp"
+                        />
+
+                </shape>
+
+            </item>
+
+            <item
+                android:left="13.33dp"
+                android:start="13.33dp"
+                android:right="13.33dp"
+                android:end="13.33dp"
+                >
+
+                <!-- 40% 不透明灰色圆 -->
+                <shape
+                    android:shape="oval"
+                    android:useLevel="false"
+                    >
+
+                    <solid
+                        android:color="#ffb3b3b3"
+                        />
+
+                    <size
+                        android:width="6.67dp"
+                        android:height="6.67dp"
+                        />
+
+                </shape>
+
+            </item>
+
+            <item
+                android:left="26.67dp"
+                android:start="26.67dp"
+                >
+
+                <!-- 40% 不透明灰色圆 -->
+                <shape
+                    android:shape="oval"
+                    android:useLevel="false"
+                    >
+
+                    <solid
+                        android:color="#66b3b3b3"
+                        />
+
+                    <size
+                        android:width="6.67dp"
+                        android:height="6.67dp"
+                        />
+
+                </shape>
+
+            </item>
+
+        </layer-list>
+
+    </item>
+
+    <!-- 第三帧动画 -->
+    <item
+        android:duration="1000"
+        >
+
+        <layer-list>
+
+            <item
+                android:right="26.67dp"
+                android:end="26.67dp"
+                >
+
+                <!-- 100% 不透明灰色圆 -->
+                <shape
+                    android:shape="oval"
+                    android:useLevel="false"
+                    >
+
+                    <solid
+                        android:color="#66b3b3b3"
+                        />
+
+                    <size
+                        android:width="6.67dp"
+                        android:height="6.67dp"
+                        />
+
+                </shape>
+
+            </item>
+
+            <item
+                android:left="13.33dp"
+                android:start="13.33dp"
+                android:right="13.33dp"
+                android:end="13.33dp"
+                >
+
+                <!-- 40% 不透明灰色圆 -->
+                <shape
+                    android:shape="oval"
+                    android:useLevel="false"
+                    >
+
+                    <solid
+                        android:color="#66b3b3b3"
+                        />
+
+                    <size
+                        android:width="6.67dp"
+                        android:height="6.67dp"
+                        />
+
+                </shape>
+
+            </item>
+
+            <item
+                android:left="26.67dp"
+                android:start="26.67dp"
+                >
+
+                <!-- 40% 不透明灰色圆 -->
+                <shape
+                    android:shape="oval"
+                    android:useLevel="false"
+                    >
+
+                    <solid
+                        android:color="#ffb3b3b3"
+                        />
+
+                    <size
+                        android:width="6.67dp"
+                        android:height="6.67dp"
+                        />
+
+                </shape>
+
+            </item>
+
+        </layer-list>
+
+    </item>
+
+</animation-list>
