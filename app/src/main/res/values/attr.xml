@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="WavingDividingStrip">
+
+        <attr
+            name="amplitude"
+            format="dimension"
+            />
+
+        <attr
+            name="waveSurfaceVelocity"
+            format="integer"
+            />
+
+        <attr
+            name="waveBaseVelocity"
+            format="integer"
+            />
+
+        <!-- 辅浪的颜色 -->
+        <attr
+            name="sideWaveColor"
+            format="color"
+            />
+
+        <attr
+            name="skyColor"
+            format="color"
+            />
+
+    </declare-styleable>
+
+</resources>
