@@ -19,25 +19,25 @@ import android.widget.ImageView;
 
 public class CircularImageView extends ImageView
 {
-	// 自身显示的形状
-	private enum ShapeType {
+    // 自身显示的形状
+    private enum ShapeType {
         TYPE_CIRCULAR_SHAPE, // 圆形
         TYPE_CIRCULAR_BEAD   // 圆角矩形
     }
 
-	private ShapeType mShapeType;
+    private ShapeType mShapeType;
 
-	// 图像画笔
-	private Paint mBitmapPaint;
+    // 图像画笔
+    private Paint mBitmapPaint;
 
     // 自身的宽度
-	private int mSelfWidth;
+    private int mSelfWidth;
 
     // 圆的半径
     private int mRadius;
 
     // 圆角矩形区域
-	private RectF mCircularBeadRect;
+    private RectF mCircularBeadRect;
 
     // 圆角半径
     private int mCornerRadius;
@@ -47,43 +47,43 @@ public class CircularImageView extends ImageView
     }
 
     public CircularImageView(Context context, AttributeSet attrs) {
-		super(context, attrs);
+        super(context, attrs);
 
-		mBitmapPaint = new Paint();
-		mBitmapPaint.setAntiAlias(true);
+        mBitmapPaint = new Paint();
+        mBitmapPaint.setAntiAlias(true);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircularImageView);
 
         // 默认为10dp
-		mCornerRadius = a.getDimensionPixelSize(R.styleable.CircularImageView_cornerRadius,
+        mCornerRadius = a.getDimensionPixelSize(R.styleable.CircularImageView_cornerRadius,
                                                 (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
                                                                                10,
                                                                                getResources().getDisplayMetrics()));
         // 默认为圆形
-		mShapeType = a.getInt(R.styleable.CircularImageView_shapeType, 0) == 0 ?
+        mShapeType = a.getInt(R.styleable.CircularImageView_shapeType, 0) == 0 ?
                      ShapeType.TYPE_CIRCULAR_SHAPE : ShapeType.TYPE_CIRCULAR_BEAD;
 
-		a.recycle();
-	}
+        a.recycle();
+    }
 
-	@Override
-	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
-	{
-		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
+    {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-		// 如果形状是圆形，则强制改变宽高一致，以两者最小值为准
-		if (ShapeType.TYPE_CIRCULAR_SHAPE == mShapeType) {
-			mSelfWidth = Math.min(getMeasuredWidth(), getMeasuredHeight());
-			mRadius    = mSelfWidth / 2;
+        // 如果形状是圆形，则强制改变宽高一致，以两者最小值为准
+        if (ShapeType.TYPE_CIRCULAR_SHAPE == mShapeType) {
+            mSelfWidth = Math.min(getMeasuredWidth(), getMeasuredHeight());
+            mRadius    = mSelfWidth / 2;
 
-			setMeasuredDimension(resolveSizeAndState(mSelfWidth, widthMeasureSpec,  MeasureSpec.UNSPECIFIED),
+            setMeasuredDimension(resolveSizeAndState(mSelfWidth, widthMeasureSpec,  MeasureSpec.UNSPECIFIED),
                                  resolveSizeAndState(mSelfWidth, heightMeasureSpec, MeasureSpec.UNSPECIFIED));
-		}
-	}
+        }
+    }
 
-	@Override
-	protected void onDraw(Canvas canvas)
-	{
+    @Override
+    protected void onDraw(Canvas canvas)
+    {
         // 更换图像的情况下要能显示新图像
         Drawable drawable = getDrawable();
         if (null == drawable) {
@@ -92,24 +92,24 @@ public class CircularImageView extends ImageView
 
         fixBmpShader(drawable);
 
-		if (ShapeType.TYPE_CIRCULAR_BEAD == mShapeType) {
-			canvas.drawRoundRect(mCircularBeadRect, mCornerRadius, mCornerRadius, mBitmapPaint);
-		}
+        if (ShapeType.TYPE_CIRCULAR_BEAD == mShapeType) {
+            canvas.drawRoundRect(mCircularBeadRect, mCornerRadius, mCornerRadius, mBitmapPaint);
+        }
         else {
-			canvas.drawCircle(mRadius, mRadius, mRadius, mBitmapPaint);
-		}
-	}
+            canvas.drawCircle(mRadius, mRadius, mRadius, mBitmapPaint);
+        }
+    }
 
     @Override
-	protected void onSizeChanged(int w, int h, int oldw, int oldh)
-	{
-		super.onSizeChanged(w, h, oldw, oldh);
+    protected void onSizeChanged(int w, int h, int oldw, int oldh)
+    {
+        super.onSizeChanged(w, h, oldw, oldh);
 
-		// 圆角矩形的区域
-		if (ShapeType.TYPE_CIRCULAR_BEAD == mShapeType) {
+        // 圆角矩形的区域
+        if (ShapeType.TYPE_CIRCULAR_BEAD == mShapeType) {
             mCircularBeadRect = new RectF(0, 0, w, h);
         }
-	}
+    }
 
     private void fixBmpShader(Drawable drawable) {
         Bitmap bmp = drawable2Bmp(drawable);
@@ -146,51 +146,51 @@ public class CircularImageView extends ImageView
     }
 
     private Bitmap drawable2Bmp(Drawable drawable)
-	{
-		if (drawable instanceof BitmapDrawable) {
-			return ((BitmapDrawable)drawable).getBitmap();
-		}
+    {
+        if (drawable instanceof BitmapDrawable) {
+            return ((BitmapDrawable)drawable).getBitmap();
+        }
 
-		int width  = drawable.getIntrinsicWidth();
-		int height = drawable.getIntrinsicHeight();
+        int width  = drawable.getIntrinsicWidth();
+        int height = drawable.getIntrinsicHeight();
 
-		Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 
-		drawable.setBounds(0, 0, width, height);
-		drawable.draw(new Canvas(bmp));
+        drawable.setBounds(0, 0, width, height);
+        drawable.draw(new Canvas(bmp));
 
-		return bmp;
-	}
+        return bmp;
+    }
 
-	private static final String INSTANCE_STATE = "instance_state";
-	private static final String SHAPE_TYPE     = "shape_type";
-	private static final String CORNER_RADIUS  = "corner_radius";
+    private static final String INSTANCE_STATE = "instance_state";
+    private static final String SHAPE_TYPE     = "shape_type";
+    private static final String CORNER_RADIUS  = "corner_radius";
 
-	@Override
-	protected Parcelable onSaveInstanceState()
-	{
-		Bundle bundle = new Bundle();
+    @Override
+    protected Parcelable onSaveInstanceState()
+    {
+        Bundle bundle = new Bundle();
 
-		bundle.putParcelable(INSTANCE_STATE, super.onSaveInstanceState());
-		bundle.putInt(SHAPE_TYPE, ShapeType.TYPE_CIRCULAR_SHAPE == mShapeType ? 0 : 1);
-		bundle.putInt(CORNER_RADIUS, mCornerRadius);
+        bundle.putParcelable(INSTANCE_STATE, super.onSaveInstanceState());
+        bundle.putInt(SHAPE_TYPE, ShapeType.TYPE_CIRCULAR_SHAPE == mShapeType ? 0 : 1);
+        bundle.putInt(CORNER_RADIUS, mCornerRadius);
 
-		return bundle;
-	}
+        return bundle;
+    }
 
-	@Override
-	protected void onRestoreInstanceState(Parcelable state)
-	{
-		if (state instanceof Bundle) {
-			super.onRestoreInstanceState(((Bundle)state).getParcelable(INSTANCE_STATE));
+    @Override
+    protected void onRestoreInstanceState(Parcelable state)
+    {
+        if (state instanceof Bundle) {
+            super.onRestoreInstanceState(((Bundle)state).getParcelable(INSTANCE_STATE));
 
-			mShapeType = ((Bundle)state).getInt(SHAPE_TYPE) == 0 ?
+            mShapeType = ((Bundle)state).getInt(SHAPE_TYPE) == 0 ?
                          ShapeType.TYPE_CIRCULAR_SHAPE :
                          ShapeType.TYPE_CIRCULAR_BEAD;
-			mCornerRadius = ((Bundle)state).getInt(CORNER_RADIUS);
-		}
+            mCornerRadius = ((Bundle)state).getInt(CORNER_RADIUS);
+        }
         else {
-			super.onRestoreInstanceState(state);
-		}
-	}
+            super.onRestoreInstanceState(state);
+        }
+    }
 }
