@@ -31,4 +31,29 @@
 
     </declare-styleable>
 
+    <declare-styleable name="CircularImageView">
+
+        <attr
+            name="cornerRadius"
+            format="dimension"
+            />
+
+        <attr
+            name="shapeType"
+            >
+
+            <enum
+                name="circular_shape"
+                value="0"
+                />
+
+            <enum
+                name="circular_bead"
+                value="1"
+                />
+
+        </attr>
+
+    </declare-styleable>
+
 </resources>
